@@ -46,14 +46,18 @@ vector<Student_info> extract_fails(vector<Student_info>& students)
 {
     // Copy current Student into pass list or fail list
     vector<Student_info> fail;
-    vector<Student_info>::size_type i = 0;
-    while ( i < students.size())
-            if (fgrade(students[i])) {
-                fail.push_back(students[i]);
-                students.erase(students.begin() + i);
-            }else
-                ++i;
+    vector<Student_info>::size_type i = students.size();
+    while ( i  > 0) {
+        if (fgrade(students[i]))
+        {
+            fail.push_back(students[i]);
+            students.erase(students.begin() + i);
+        }
+        --i;
+        
+    }
     
+
     return fail;
     
 }
